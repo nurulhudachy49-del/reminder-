@@ -309,26 +309,32 @@ function scheduleNotif(r){
 // ══════════════════════════════════════════
 // AI CALL
 // ══════════════════════════════════════════
-async function callAI(input){
-  const isBn=state.lang==='bn';
-  const sys=`You are a smart reminder assistant. Parse the user's ${isBn?'Bengali':'English'} input and extract:
-1. time (HH:MM AM/PM)
-2. A list of 3-5 specific tasks (array of strings in ${isBn?'Bengali':'English'})
-3. A warm AI greeting in ${isBn?'Bengali':'English'} for ${state.userName||'the user'}
-4. A short notification title
-
-Respond ONLY in JSON (no extra text):
-{"time":"08:00 AM","tasks":["কাজ ১","কাজ ২"],"greeting":"শুভ সকাল! আজ আপনার কাজ আছে।","title":"সকাল ৮টা — শুরু করুন!"}`;
-  
-  const res=await fetch('https://api.anthropic.com/v1/messages',{
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:sys,messages:[{role:'user',content:input}]})
-  });
-  const data=await res.json();
-  const raw=data.content?.[0]?.text||'{}';
-  try{return JSON.parse(raw.replace(/```json|```/g,'').trim());}catch{return null;}
-}
+ async function callAI(input){
+  const timePatterns=[
+    [/ফজর/,()=>5],
+    [/সকাল\s*(\d+)/,m=>parseInt(m[1])],
+    [/দুপুর\s*(\d+)/,m=>parseInt(m[1])+12],
+    [/বিকাল\s*(\d+)/,m=>parseInt(m[1])+12],
+    [/সন্ধ্যা\s*(\d+)/,m=>parseInt(m[1])+12],
+    [/রাত\s*(\d+)/,m=>parseInt(m[1])>=10?parseInt(m[1]):parseInt(m[1])+12],
+    [/(\d+)\s*টা/,m=>parseInt(m[1])],
+    [/(\d+)\s*pm/i,m=>(parseInt(m[1])%12)+12],
+    [/(\d+)\s*am/i,m=>parseInt(m[1])%12],
+  ];
+  let hour=8;
+  for(const[p,fn]of timePatterns){
+    const m=input.match(p);
+    if(m){hour=fn(m);break;}
+  }
+  const period=hour>=12?'PM':'AM';
+  const h12=hour%12||12;
+  return{
+    time:`${h12}:00 ${period}`,
+    tasks:[input.substring(0,35)||'কাজ করুন','সময়মতো শেষ করুন','প্রোডাক্টিভ থাকুন'],
+    greeting:`${h12}:00 ${period} বেজে গেছে! কাজ শুরু করুন।`,
+    title:`${h12}:00 ${period} — রিমাইন্ডার`
+  };
+ }async function callAI(input  const isBn=state.lang  const sys=`You are a smart reminder assistant. Parse the user's ${isBn?'Bengali':'English'2. A list of 3-5 specific tasks (array of strings in ${isBn?'Bengali':'English'3. A warm AI greeting in ${isBn?'Bengali':'English'} for ${state.userName||'the user'    method:'POST'    headers:{'Content-Type':'application/json'    body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:sys,messages:[{role:'user',content  const data=await res.json  const raw=data.content?.[0]?  try{return JSON.parse(raw.replace(/```json|```/g,'').trim());}catch{return null;
 
 // ══════════════════════════════════════════
 // ACTIONS

@@ -60,6 +60,682 @@
   .input-wrap{background:rgba(255,255,255,.04);border-radius:18px;padding:16px;border:1px solid rgba(255,255,255,.08);margin-bottom:16px}
   textarea{width:100%;background:transparent;border:none;outline:none;color:#fff;font-size:15px;resize:none;line-height:1.6;font-family:inherit}
   textarea::placeholder{color:rgba(255,255,255,.3)}
+  .preset-scroll{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;umargin:8px 0;scrollbar-width:none}
+  .chip{flex-shrink:0;padding:6px 12px;border-radius:20px;background:rgba(0,229,160,.08);border:1px solid rgba(0,229,160,.2);color:rgba(255,255,255,.7);font-size:12px;cursor:pointer;white-space:nowrap;font-family:inherit}
+  .set-btn{width:100%;padding:13px;border-radius:50px;border:none;background:linear-gradient(90deg,#00e5a0,#00a8ff);color:#000;font-weight:800;font-size:15px;cursor:pointer;margin-top:8px;font-family:inherit;transition:opacity .2s}
+  .set-btn:disabled{opacity:.4}
+  
+  /* NEXT CARD */
+  .next-card{background:rgba(255,255,255,.04);border-radius:16px;padding:16px;border:1px solid rgba(255,255,255,.08);margin-top:4px}
+  .next-label{color:rgba(255,255,255,.4);font-size:12px;margin-bottom:4px}
+  .next-time{color:#00e5a0;font-size:32px;font-weight:800;margin-bottom:2px}
+  .next-title{color:#fff;font-size:14px;margin-bottom:8px}
+  .task-mini{display:flex;gap:8px;flex-wrap:wrap}
+  .task-chip{background:rgba(0,229,160,.08);color:rgba(255,255,255,.6);border-radius:6px;padding:3px 8px;font-size:12px}
+  
+  /* REMINDER CARDS */
+  .section-title{color:#fff;font-size:20px;font-weight:800;margin:8px 0 16px}
+  .group-label{color:rgba(255,255,255,.35);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin:8px 0}
+  .reminder-card{background:rgba(255,255,255,.04);border-radius:16px;padding:14px 16px;margin-bottom:10px;border:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+  .reminder-card.fired{opacity:.4}
+  .rc-left{display:flex;flex-direction:column;gap:4px;flex:1}
+  .rc-time{color:#00e5a0;font-size:28px;font-weight:800}
+  .rc-time.done{text-decoration:line-through}
+  .rc-title{color:#fff;font-size:14px;font-weight:600}
+  .task-list{display:flex;flex-direction:column;gap:4px;margin-top:4px}
+  .task-item{display:flex;align-items:flex-start;gap:8px}
+  .task-dot{width:6px;height:6px;border-radius:3px;background:#00e5a0;flex-shrink:0;margin-top:6px}
+  .task-text{color:rgba(255,255,255,.6);font-size:13px;line-height:1.4}
+  .del-btn{background:rgba(255,50,50,.1);border:none;border-radius:8px;padding:6px 10px;cursor:pointer;font-size:16px;flex-shrink:0}
+  .empty-state{text-align:center;padding:40px 0;color:rgba(255,255,255,.3);font-size:16px;line-height:2}
+  
+  /* FOCUS */
+  .timer-wrap{width:220px;height:220px;margin:0 auto 24px;position:relative;display:flex;align-items:center;justify-content:center}
+  .timer-inner{display:flex;flex-direction:column;align-items:center}
+  .timer-num{color:#fff;font-size:46px;font-weight:800;letter-spacing:-2px}
+  .timer-label{color:rgba(255,255,255,.4);font-size:13px}
+  .focus-btn-row{display:flex;gap:10px;justify-content:center;margin-bottom:24px}
+  .focus-btn{padding:10px 20px;border-radius:50px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:#fff;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit}
+  .focus-btn.start{background:#00e5a0;color:#000;border-color:#00e5a0}
+  .focus-btn.pause{background:#ff4444;color:#fff;border-color:#ff4444}
+  .focus-tip{background:rgba(255,255,255,.04);border-radius:14px;padding:14px 16px;font-size:13px;line-height:1.8;color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.07);margin-bottom:12px}
+  .focus-tip.coming{background:rgba(255,60,60,.08);border-color:rgba(255,60,60,.2)}
+  .focus-tip p.tip-title{color:#00e5a0;font-weight:700;margin-bottom:8px}
+  .focus-tip p.coming-title{color:#ff6b6b;font-weight:700;margin-bottom:8px}
+  .coming-badge{background:rgba(255,200,0,.1);border-radius:8px;padding:6px 12px;margin-top:8px;display:inline-block}
+  .coming-badge span{color:#ffd200;font-size:12px;font-weight:700}
+  
+  /* SETTINGS */
+  .setting-card{background:rgba(255,255,255,.04);border-radius:16px;padding:16px;margin-bottom:12px;border:1px solid rgba(255,255,255,.07)}
+  .setting-card.yellow{background:rgba(255,200,0,.06);border-color:rgba(255,200,0,.2)}
+  .setting-card.blue{background:rgba(0,120,255,.06);border-color:rgba(0,120,255,.2)}
+  .setting-label{color:rgba(255,255,255,.5);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
+  .setting-input{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:10px 14px;color:#fff;font-size:15px;outline:none;font-family:inherit}
+  .lang-row{display:flex;gap:10px}
+  .lang-btn{flex:1;padding:10px;border-radius:10px;border:none;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;background:rgba(255,255,255,.08);color:#fff;transition:all .2s}
+  .lang-btn.active{background:#00e5a0;color:#000}
+  .alarm-btn{width:100%;padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:#fff;font-weight:600;font-size:14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-family:inherit;transition:all .2s}
+  .alarm-btn.active{background:rgba(0,229,160,.15);border-color:#00e5a0}
+  .record-row{display:flex;align-items:center;gap:10px;margin-top:12px}
+  .record-btn{padding:8px 16px;border-radius:20px;border:none;background:rgba(255,255,255,.1);color:#fff;font-family:inherit;cursor:pointer;font-weight:700;font-size:13px}
+  .record-btn.recording{background:#ff4444}
+  .recorded-ok{color:#00e5a0;font-size:13px}
+  .version-text{text-align:center;color:rgba(255,255,255,.2);font-size:12px;margin-top:20px}
+  
+  /* MODAL */
+  .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;display:flex;align-items:flex-end;justify-content:center;backdrop-filter:blur(4px)}
+  .modal-overlay.hidden{display:none}
+  .modal{background:#141420;border-radius:24px 24px 0 0;padding:24px 20px 36px;width:100%;max-width:430px;border:1px solid rgba(255,255,255,.1)}
+  .modal h3{color:#fff;margin-bottom:16px}
+  .setup-step{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px;color:rgba(255,255,255,.7);font-size:14px;line-height:1.5}
+  .step-num{width:28px;height:28px;border-radius:14px;background:#00e5a0;color:#000;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+  .green-tip{background:rgba(0,229,160,.1);border-radius:10px;padding:12px;margin-top:12px}
+  .green-tip p{color:#00e5a0;font-size:13px}
+  
+  /* TOAST */
+  .toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);color:#000;padding:10px 22px;border-radius:50px;font-weight:700;z-index:9999;font-size:13px;box-shadow:0 4px 20px rgba(0,0,0,.4);white-space:nowrap;transition:all .3s;font-family:inherit}
+  .toast.hidden{display:none}
+  .toast.error{background:#ff4444;color:#fff}
+  .toast.success{background:#00e5a0}
+  
+  /* BOTTOM NAV */
+  nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:rgba(10,10,15,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.06);display:flex;z-index:100}
+  .nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 4px 14px;background:none;border:none;cursor:pointer;position:relative;color:rgba(255,255,255,.35);transition:color .2s;font-family:inherit}
+  .nav-btn.active{color:#00e5a0}
+  .nav-icon{font-size:22px}
+  .nav-label{font-size:10px;font-weight:400}
+  .nav-btn.active .nav-label{font-weight:700}
+  .nav-dot{position:absolute;bottom:6px;width:4px;height:4px;border-radius:2px;background:#00e5a0;display:none}
+  .nav-btn.active .nav-dot{display:block}
+
+  /* LOADING */
+  .loading-bar{width:100%;height:3px;background:linear-gradient(90deg,#00e5a0,#00a8ff);position:fixed;top:0;left:0;z-index:999;animation:loading 1.5s ease-in-out infinite}
+  @keyframes loading{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+  .loading-bar.hidden{display:none}
+</style>
+</head>
+<body>
+<div class="bg-mesh"></div>
+<div id="app">
+  <div class="loading-bar hidden" id="loadingBar"></div>
+  
+  <!-- TOAST -->
+  <div class="toast hidden" id="toast"></div>
+  
+  <!-- MODAL -->
+  <div class="modal-overlay hidden" id="modal" onclick="closeModal()">
+    <div class="modal" onclick="event.stopPropagation()">
+      <h3>☁️ Cloud Sync + Play Store রোডম্যাপ</h3>
+      <div class="setup-step"><div class="step-num">1</div><div><b>Netlify</b>-তে ফ্রি host করুন<br/><small>netlify.com → New Site → GitHub থেকে deploy</small></div></div>
+      <div class="setup-step"><div class="step-num">2</div><div><b>Firebase</b> যোগ করুন (ফ্রি)<br/><small>firebase.google.com → Firestore → keys বসান</small></div></div>
+      <div class="setup-step"><div class="step-num">3</div><div><b>PWA</b> বানান<br/><small>manifest.json + service worker যোগ করুন</small></div></div>
+      <div class="setup-step"><div class="step-num">4</div><div><b>Play Store</b> submit করুন<br/><small>TWA দিয়ে $25 দিয়ে publish করুন</small></div></div>
+      <div class="green-tip"><p>✅ Web app update করলেই সব user স্বয়ংক্রিয়ভাবে আপডেট পাবে!</p></div>
+      <button class="set-btn" style="margin-top:16px" onclick="closeModal()">বুঝেছি ✓</button>
+    </div>
+  </div>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <span class="app-name">ReminderAI</span>
+    <button class="lang-toggle" onclick="toggleLang()" id="langBtn">EN</button>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content" id="content"></div>
+
+  <!-- NAV -->
+  <nav>
+    <button class="nav-btn active" id="nav-home" onclick="showTab('home')">
+      <span class="nav-icon">🏠</span><span class="nav-label" id="nl-home">হোম</span><div class="nav-dot"></div>
+    </button>
+    <button class="nav-btn" id="nav-reminders" onclick="showTab('reminders')">
+      <span class="nav-icon">📋</span><span class="nav-label" id="nl-reminders">রিমাইন্ডার</span><div class="nav-dot"></div>
+    </button>
+    <button class="nav-btn" id="nav-focus" onclick="showTab('focus')">
+      <span class="nav-icon">🎯</span><span class="nav-label" id="nl-focus">ফোকাস</span><div class="nav-dot"></div>
+    </button>
+    <button class="nav-btn" id="nav-settings" onclick="showTab('settings')">
+      <span class="nav-icon">⚙️</span><span class="nav-label" id="nl-settings">সেটিংস</span><div class="nav-dot"></div>
+    </button>
+  </nav>
+</div>
+
+<script>
+// ══════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════
+let state = {
+  tab: 'home',
+  lang: load('lang') || 'bn',
+  userName: load('userName') || '',
+  reminders: load('reminders') || [],
+  voiceAlarm: load('voiceAlarm') || 'ai',
+  focusSecs: 25*60,
+  focusRunning: false,
+  listening: false,
+  loading: false,
+  input: '',
+  recordedBlob: null,
+  recording: false,
+  notifPerm: 'default',
+};
+let timerRefs = {};
+let focusInterval = null;
+let mediaRecorder = null;
+let audioChunks = [];
+
+// ══════════════════════════════════════════
+// STORAGE
+// ══════════════════════════════════════════
+function save(k,v){try{localStorage.setItem('rai_'+k,JSON.stringify(v))}catch{}}
+function load(k){try{const v=localStorage.getItem('rai_'+k);return v?JSON.parse(v):null}catch{return null}}
+
+// ══════════════════════════════════════════
+// HELPERS
+// ══════════════════════════════════════════
+function parseTime(t){
+  const m=t.match(/(\d{1,2}):(\d{2})\s*(AM|PM|am|pm)?/);
+  if(!m)return null;
+  let h=parseInt(m[1]),mn=parseInt(m[2]);
+  const p=m[3]?.toUpperCase();
+  if(p==='PM'&&h<12)h+=12;
+  if(p==='AM'&&h===12)h=0;
+  return{h,m:mn};
+}
+function fmtTime(h,m){
+  const p=h>=12?'PM':'AM';
+  return`${h%12||12}:${String(m).padStart(2,'0')} ${p}`;
+}
+function msUntil(h,m){
+  const now=new Date(),t=new Date();
+  t.setHours(h,m,0,0);
+  if(t<=now)t.setDate(t.getDate()+1);
+  return t-now;
+}
+function greeting(){
+  const h=new Date().getHours();
+  const bn=['শুভ সকাল! 🌅','শুভ দুপুর! ☀️','শুভ বিকেল! 🌇','শুভ রাত! 🌙'];
+  const en=['Good morning! 🌅','Good noon! ☀️','Good afternoon! 🌇','Good night! 🌙'];
+  const idx=h<12?0:h<14?1:h<18?2:3;
+  return state.lang==='bn'?bn[idx]:en[idx];
+}
+function showToast(msg,type='success'){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.className='toast '+type;
+  setTimeout(()=>t.className='toast hidden',3500);
+}
+function speak(text){
+  if(!window.speechSynthesis)return;
+  window.speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang=state.lang==='bn'?'bn-BD':'en-US';
+  u.rate=0.9;u.pitch=1.1;
+  window.speechSynthesis.speak(u);
+}
+function setLoading(v){
+  state.loading=v;
+  document.getElementById('loadingBar').className=v?'loading-bar':'loading-bar hidden';
+}
+
+// ══════════════════════════════════════════
+// NOTIFICATIONS
+// ══════════════════════════════════════════
+async function requestNotif(){
+  const p=await Notification.requestPermission();
+  state.notifPerm=p;
+  if(p==='granted'){showToast('✅ নোটিফিকেশন চালু হয়েছে!');render();}
+}
+function scheduleNotif(r){
+  if(timerRefs[r.id])clearTimeout(timerRefs[r.id]);
+  timerRefs[r.id]=setTimeout(()=>{
+    if(Notification.permission==='granted'){
+      new Notification('⏰ '+r.title,{
+        body:r.tasks.slice(0,3).map((t,i)=>`${i+1}. ${t}`).join('\n'),
+        icon:'https://api.dicebear.com/7.x/bottts/svg?seed=reminderai'
+      });
+    }
+    if(state.voiceAlarm==='ai')speak(r.greeting+' '+r.tasks.slice(0,3).join('। '));
+    if(state.voiceAlarm==='recorded'&&state.recordedBlob){
+      new Audio(URL.createObjectURL(state.recordedBlob)).play().catch(()=>{});
+    }
+    state.reminders=state.reminders.map(x=>x.id===r.id?{...x,fired:true}:x);
+    save('reminders',state.reminders);
+    render();
+  },msUntil(r.h,r.m));
+}
+
+// ══════════════════════════════════════════
+// AI CALL
+// ══════════════════════════════════════════
+ async function callAI(input){
+  const timePatterns=[
+    [/ফজর/,()=>5],
+    [/সকাল\s*(\d+)/,m=>parseInt(m[1])],
+    [/দুপুর\s*(\d+)/,m=>parseInt(m[1])+12],
+    [/বিকাল\s*(\d+)/,m=>parseInt(m[1])+12],
+    [/সন্ধ্যা\s*(\d+)/,m=>parseInt(m[1])+12],
+    [/রাত\s*(\d+)/,m=>parseInt(m[1])>=10?parseInt(m[1]):parseInt(m[1])+12],
+    [/(\d+)\s*টা/,m=>parseInt(m[1])],
+    [/(\d+)\s*pm/i,m=>(parseInt(m[1])%12)+12],
+    [/(\d+)\s*am/i,m=>parseInt(m[1])%12],
+  ];
+  let hour=8;
+  for(const[p,fn]of timePatterns){
+    const m=input.match(p);
+    if(m){hour=fn(m);break;}
+  }
+  const period=hour>=12?'PM':'AM';
+  const h12=hour%12||12;
+  return{
+    time:`${h12}:00 ${period}`,
+    tasks:[input.substring(0,35)||'কাজ করুন','সময়মতো শেষ করুন','প্রোডাক্টিভ থাকুন'],
+    greeting:`${h12}:00 ${period} বেজে গেছে! কাজ শুরু করুন।`,
+    title:`${h12}:00 ${period} — রিমাইন্ডার
+    }; 
+// ══════════════════════════════════════════
+// ACTIONS
+// ══════════════════════════════════════════
+async function handleSubmit(){
+  const input=document.getElementById('mainInput')?.value||state.input;
+  if(!input.trim())return;
+  setLoading(true);
+  try{
+    const parsed=await callAI(input);
+    if(!parsed?.time){showToast(state.lang==='bn'?'সময় বোঝা যায়নি।':'Could not parse time.','error');return;}
+    const t=parseTime(parsed.time);
+    if(!t){showToast('সময় পার্স হয়নি।','error');return;}
+    const id=Date.now().toString();
+    const r={id,rawInput:input,time:fmtTime(t.h,t.m),h:t.h,m:t.m,
+      title:parsed.title||'রিমাইন্ডার',greeting:parsed.greeting||'',
+      tasks:parsed.tasks||[],fired:false,createdAt:new Date().toISOString(),lang:state.lang};
+    state.reminders=[r,...state.reminders];
+    save('reminders',state.reminders);
+    scheduleNotif(r);
+    state.input='';
+    showToast(`✅ ${r.time} তে রিমাইন্ডার সেট!`);
+    render();
+  }finally{setLoading(false);}
+}
+
+function startVoice(){
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SR){showToast('ভয়েস সাপোর্ট নেই।','error');return;}
+  const rec=new SR();
+  rec.lang=state.lang==='bn'?'bn-BD':'en-US';
+  rec.interimResults=false;
+  rec.onstart=()=>{state.listening=true;render();}
+  rec.onend=()=>{state.listening=false;render();}
+  rec.onresult=(e)=>{
+    const txt=e.results[0][0].transcript;
+    state.input=txt;
+    const el=document.getElementById('mainInput');
+    if(el)el.value=txt;
+    setTimeout(handleSubmit,400);
+  };
+  rec.onerror=()=>{state.listening=false;showToast('ভয়েস ব্যর্থ।','error');render();}
+  rec.start();
+}
+
+function deleteReminder(id){
+  if(timerRefs[id])clearTimeout(timerRefs[id]);
+  state.reminders=state.reminders.filter(r=>r.id!==id);
+  save('reminders',state.reminders);
+  render();
+}
+
+function toggleLang(){
+  state.lang=state.lang==='bn'?'en':'bn';
+  save('lang',state.lang);
+  render();
+}
+
+function setPreset(txt){
+  const el=document.getElementById('mainInput');
+  if(el){el.value=txt;el.focus();}
+  state.input=txt;
+}
+
+function setVoiceAlarm(v){
+  state.voiceAlarm=v;
+  save('voiceAlarm',v);
+  render();
+}
+
+async function startRecording(){
+  try{
+    const stream=await navigator.mediaDevices.getUserMedia({audio:true});
+    audioChunks=[];
+    mediaRecorder=new MediaRecorder(stream);
+    mediaRecorder.ondataavailable=e=>audioChunks.push(e.data);
+    mediaRecorder.onstop=()=>{
+      state.recordedBlob=new Blob(audioChunks,{type:'audio/webm'});
+      showToast('✅ ভয়েস রেকর্ড হয়েছে!');
+      render();
+    };
+    mediaRecorder.start();
+    state.recording=true;
+    render();
+  }catch{showToast('মাইক্রোফোন অ্যাক্সেস দিন।','error');}
+}
+
+function stopRecording(){
+  mediaRecorder?.stop();
+  state.recording=false;
+  render();
+}
+
+// Focus timer
+function startFocus(){
+  state.focusRunning=true;
+  focusInterval=setInterval(()=>{
+    state.focusSecs--;
+    if(state.focusSecs<=0){
+      clearInterval(focusInterval);
+      state.focusRunning=false;
+      state.focusSecs=25*60;
+      speak(state.lang==='bn'?'ফোকাস সেশন সম্পন্ন! চমৎকার কাজ করেছেন।':'Focus session complete! Great work.');
+      showToast('🎉 Focus session সম্পন্ন!');
+    }
+    updateTimer();
+  },1000);
+}
+
+function pauseFocus(){state.focusRunning=false;clearInterval(focusInterval);updateTimer();}
+function resetFocus(){clearInterval(focusInterval);state.focusRunning=false;state.focusSecs=25*60;updateTimer();}
+function breakFocus(){clearInterval(focusInterval);state.focusRunning=false;state.focusSecs=5*60;startFocus();}
+
+function updateTimer(){
+  const m=Math.floor(state.focusSecs/60),s=state.focusSecs%60;
+  const el=document.getElementById('timerNum');
+  if(el)el.textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  const pct=((25*60-state.focusSecs)/(25*60))*100;
+  const circle=document.getElementById('timerCircle');
+  if(circle){
+    const r=100,circ=2*Math.PI*r;
+    circle.style.strokeDashoffset=circ*(1-pct/100);
+  }
+  const lbl=document.getElementById('timerLabel');
+  if(lbl)lbl.textContent=state.focusRunning?(state.lang==='bn'?'মনোযোগ চলছে...':'Focusing...'):(state.lang==='bn'?'প্রস্তুত':'Ready');
+}
+
+function openModal(){document.getElementById('modal').className='modal-overlay';}
+function closeModal(){document.getElementById('modal').className='modal-overlay hidden';}
+
+// ══════════════════════════════════════════
+// RENDER
+// ══════════════════════════════════════════
+const T={
+  bn:{home:'হোম',reminders:'রিমাইন্ডার',focus:'ফোকাস',settings:'সেটিংস',
+      tapSpeak:'নিচের বাটনে চাপুন ও বলুন',speaking:'🎙️ বলুন...',
+      orType:'অথবা লিখুন',setBtn:'✅ রিমাইন্ডার সেট করুন',setting:'⏳ AI প্রসেস করছে...',
+      notifBanner:'🔔 নোটিফিকেশন চালু করুন — এখনই ক্লিক করুন',
+      nextLabel:'⏰ পরবর্তী রিমাইন্ডার',active:'সক্রিয়',done:'সম্পন্ন',
+      empty:'🌙 কোনো রিমাইন্ডার নেই',emptyHint:'হোম পেজ থেকে যোগ করুন',
+      presets:['ফজর নামাজের জন্য সকাল ৫টায়','সকাল ৮টায় কাজ শুরু করতে হবে','দুপুর ১টায় খাওয়ার সময়','রাত ১০টায় ঘুমাও'],
+      placeholder:'যেমন: সন্ধ্যা ৭টায় মাগরিব নামাজের কথা মনে করাও...',
+      micExample:'"সকাল ৮টায় অফিসের রিপোর্ট তৈরি করতে হবে"'},
+  en:{home:'Home',reminders:'Reminders',focus:'Focus',settings:'Settings',
+      tapSpeak:'Tap & speak',speaking:'🎙️ Listening...',
+      orType:'Or type below',setBtn:'✅ Set Reminder',setting:'⏳ AI Processing...',
+      notifBanner:'🔔 Enable Notifications — tap here',
+      nextLabel:'⏰ Next Reminder',active:'Active',done:'Done',
+      empty:'🌙 No reminders yet',emptyHint:'Add one from the Home tab',
+      presets:['Wake me at 6 AM for workout','Meeting at 9 AM — prepare notes','Lunch break at 1 PM','Sleep reminder at 10 PM'],
+      placeholder:'e.g. Remind me at 7 PM to pray Maghrib...',
+      micExample:'"Remind me at 8 AM to prepare office report"'}
+};
+
+function render(){
+  const l=state.lang;
+  const tx=T[l];
+  
+  // Nav labels
+  ['home','reminders','focus','settings'].forEach((t,i)=>{
+    document.getElementById('nav-'+t).className='nav-btn'+(state.tab===t?' active':'');
+    document.getElementById('nl-'+t).textContent=[tx.home,tx.reminders,tx.focus,tx.settings][i];
+  });
+  document.getElementById('langBtn').textContent=l==='bn'?'EN':'বাং';
+  
+  const upcoming=state.reminders.filter(r=>!r.fired).sort((a,b)=>(a.h*60+a.m)-(b.h*60+b.m));
+  const done=state.reminders.filter(r=>r.fired);
+  const c=document.getElementById('content');
+  
+  if(state.tab==='home'){
+    c.innerHTML=`
+      <div class="greet-card">
+        <p class="greet-text">${greeting()}</p>
+        <p class="greet-name">${state.userName?(l==='bn'?`স্বাগতম, ${state.userName}!`:`Welcome, ${state.userName}!`):(l==='bn'?'স্বাগতম!':'Welcome!')}</p>
+        <div class="stats-row">
+          <div class="stat-box"><span class="stat-num">${upcoming.length}</span><span class="stat-label">${l==='bn'?'সক্রিয়':'Active'}</span></div>
+          <div class="stat-box"><span class="stat-num">${done.length}</span><span class="stat-label">${l==='bn'?'সম্পন্ন':'Done'}</span></div>
+          <div class="stat-box"><span class="stat-num">${state.reminders.reduce((a,r)=>a+r.tasks.length,0)}</span><span class="stat-label">${l==='bn'?'মোট কাজ':'Tasks'}</span></div>
+        </div>
+      </div>
+      ${state.notifPerm!=='granted'?`<button class="notif-banner" onclick="requestNotif()">${tx.notifBanner}</button>`:''}
+      <div class="mic-section">
+        <p class="mic-hint">${state.listening?tx.speaking:tx.tapSpeak}</p>
+        <div class="mic-wrap">
+          ${state.listening?'<div class="pulse pulse1"></div><div class="pulse pulse2"></div>':''}
+          <button class="big-mic ${state.listening?'listening':''}" onclick="startVoice()" ${state.loading?'disabled':''}>
+            ${state.listening?'🔴':'🎙️'}
+          </button>
+        </div>
+        <p class="mic-example">${tx.micExample}</p>
+      </div>
+      <div class="or-row"><div class="or-line"></div><span class="or-text">${tx.orType}</span><div class="or-line"></div></div>
+      <div class="input-wrap">
+        <textarea id="mainInput" placeholder="${tx.placeholder}" rows="3" oninput="state.input=this.value">${state.input}</textarea>
+        <div class="preset-scroll">${tx.presets.map(p=>`<button class="chip" onclick="setPreset('${p}')">${p}</button>`).join('')}</div>
+        <button class="set-btn" onclick="handleSubmit()" ${state.loading||!state.input.trim()?'disabled':''}>
+          ${state.loading?tx.setting:tx.setBtn}
+        </button>
+      </div>
+      ${upcoming[0]?`
+      <div class="next-card">
+        <p class="next-label">${tx.nextLabel}</p>
+        <p class="next-time">${upcoming[0].time}</p>
+        <p class="next-title">${upcoming[0].title}</p>
+        <div class="task-mini">${upcoming[0].tasks.slice(0,2).map(t=>`<span class="task-chip">• ${t}</span>`).join('')}</div>
+      </div>`:''}
+    `;
+  } else if(state.tab==='reminders'){
+    c.innerHTML=`
+      <h2 class="section-title">📋 ${tx.reminders}</h2>
+      ${state.reminders.length===0?`<div class="empty-state"><p>${tx.empty}<br/><small>${tx.emptyHint}</small></p></div>`:''}
+      ${upcoming.length>0?`<p class="group-label">${tx.active}</p>`:''}
+      ${upcoming.map(r=>`
+        <div class="reminder-card">
+          <div class="rc-left">
+            <span class="rc-time">${r.time}</span>
+            <span class="rc-title">${r.title}</span>
+            <div class="task-list">${r.tasks.map(t=>`<div class="task-item"><div class="task-dot"></div><span class="task-text">${t}</span></div>`).join('')}</div>
+          </div>
+          <button class="del-btn" onclick="deleteReminder('${r.id}')">🗑️</button>
+        </div>`).join('')}
+      ${done.length>0?`<p class="group-label" style="opacity:.5">${tx.done}</p>`:''}
+      ${done.map(r=>`
+        <div class="reminder-card fired">
+          <div class="rc-left">
+            <span class="rc-time done">${r.time}</span>
+            <span class="rc-title">${r.title} ✅</span>
+          </div>
+          <button class="del-btn" onclick="deleteReminder('${r.id}')">✕</button>
+        </div>`).join('')}
+    `;
+  } else if(state.tab==='focus'){
+    const mins=Math.floor(state.focusSecs/60),secs=state.focusSecs%60;
+    const pct=((25*60-state.focusSecs)/(25*60))*100;
+    const circ=2*Math.PI*100;
+    c.innerHTML=`
+      <h2 class="section-title">🎯 Focus Mode</h2>
+      <p style="color:rgba(255,255,255,.5);text-align:center;font-size:14px;margin-bottom:24px">
+        ${l==='bn'?'২৫ মিনিট কাজ, ৫ মিনিট বিরতি (পমোডোরো)':'Work 25 min, rest 5 min (Pomodoro)'}
+      </p>
+      <div class="timer-wrap">
+        <svg width="220" height="220" style="position:absolute">
+          <circle cx="110" cy="110" r="100" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="10"/>
+          <circle id="timerCircle" cx="110" cy="110" r="100" fill="none" stroke="#00e5a0"
+            stroke-width="10" stroke-linecap="round"
+            stroke-dasharray="${circ}" stroke-dashoffset="${circ*(1-pct/100)}"
+            style="transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset 1s linear"/>
+        </svg>
+        <div class="timer-inner">
+          <span class="timer-num" id="timerNum">${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}</span>
+          <span class="timer-label" id="timerLabel">${state.focusRunning?(l==='bn'?'মনোযোগ চলছে...':'Focusing...'):(l==='bn'?'প্রস্তুত':'Ready')}</span>
+        </div>
+      </div>
+      <div class="focus-btn-row">
+        <button class="focus-btn" onclick="resetFocus()">↺ ${l==='bn'?'রিসেট':'Reset'}</button>
+        <button class="focus-btn ${state.focusRunning?'pause':'start'}" onclick="${state.focusRunning?'pauseFocus()':'startFocus()'}">
+          ${state.focusRunning?`⏸ ${l==='bn'?'পজ':'Pause'}`:`▶ ${l==='bn'?'শুরু':'Start'}`}
+        </button>
+        <button class="focus-btn" onclick="breakFocus()">☕ ${l==='bn'?'বিরতি':'Break'}</button>
+      </div>
+      <div class="focus-tip">
+        <p class="tip-title">💡 ${l==='bn'?'Focus টিপস':'Focus Tips'}</p>
+        <p>• ${l==='bn'?'ফোন সাইলেন্ট রাখুন':'Put phone on silent'}</p>
+        <p>• ${l==='bn'?'একটি কাজে মনোযোগ দিন':'Focus on one task'}</p>
+        <p>• ${l==='bn'?'পানি পাশে রাখুন':'Keep water nearby'}</p>
+        <p>• ${l==='bn'?'প্রতি ২৫ মিনিটে উঠুন':'Stand up every 25 minutes'}</p>
+      </div>
+      <div class="focus-tip coming">
+        <p class="coming-title">🔒 App Blocker</p>
+        <p style="color:rgba(255,255,255,.5);font-size:13px">${l==='bn'?'Play Store অ্যাপে থাকবে। Android system permission দরকার।':'Available in the Play Store app. Requires Android system permission.'}</p>
+        <div class="coming-badge"><span>🚧 COMING IN v3.0</span></div>
+      </div>
+    `;
+  } else if(state.tab==='settings'){
+    c.innerHTML=`
+      <h2 class="section-title">⚙️ ${tx.settings}</h2>
+      <div class="setting-card">
+        <p class="setting-label">👤 ${l==='bn'?'আপনার নাম':'Your Name'}</p>
+        <input class="setting-input" placeholder="${l==='bn'?'নাম লিখুন...':'Enter your name...'}" value="${state.userName}" oninput="state.userName=this.value;save('userName',this.value)"/>
+      </div>
+      <div class="setting-card">
+        <p class="setting-label">🌐 ${l==='bn'?'ভাষা':'Language'}</p>
+        <div class="lang-row">
+          <button class="lang-btn ${l==='bn'?'active':''}" onclick="state.lang='bn';save('lang','bn');render()">🇧🇩 বাংলা</button>
+          <button class="lang-btn ${l==='en'?'active':''}" onclick="state.lang='en';save('lang','en');render()">🇬🇧 English</button>
+        </div>
+      </div>
+      <div class="setting-card">
+        <p class="setting-label">🔊 ${l==='bn'?'অ্যালার্ম ধরন':'Alarm Type'}</p>
+        ${[['ai',l==='bn'?'🤖 AI ভয়েস (ডিফল্ট)':'🤖 AI Voice (Default)'],
+           ['recorded',l==='bn'?'🎙️ নিজের ভয়েস':'🎙️ Record Your Voice'],
+           ['silent',l==='bn'?'🔕 শুধু নোটিফিকেশন':'🔕 Silent']].map(([v,label])=>`
+          <button class="alarm-btn ${state.voiceAlarm===v?'active':''}" onclick="setVoiceAlarm('${v}')">
+            <span>${label}</span>${state.voiceAlarm===v?'<span style="color:#00e5a0">✓</span>':''}
+          </button>`).join('')}
+        ${state.voiceAlarm==='recorded'?`
+          <div class="record-row">
+            <button class="record-btn ${state.recording?'recording':''}" onclick="${state.recording?'stopRecording()':'startRecording()'}">
+              ${state.recording?(l==='bn'?'⏹ বন্ধ করুন':'⏹ Stop'):(l==='bn'?'🎙️ রেকর্ড শুরু':'🎙️ Start Recording')}
+            </button>
+            ${state.recordedBlob?`<span class="recorded-ok">✅ ${l==='bn'?'রেকর্ড হয়েছে':'Recorded!'}</span>`:''}
+          </div>`:''}
+      </div>
+      <div class="setting-card yellow">
+        <p class="setting-label">⌚ ${l==='bn'?'স্মার্টওয়াচ':'Smartwatch'}</p>
+        <p style="color:rgba(255,255,255,.5);font-size:13px;line-height:1.6">
+          ${l==='bn'?'Wear OS / Mi Band সংযোগের জন্য Native Android অ্যাপ দরকার। Play Store publish-এর পর যোগ হবে।':'Wear OS / Mi Band requires Native Android app. Will be added after Play Store launch.'}
+        </p>
+        <div class="coming-badge" style="margin-top:8px"><span>🚧 COMING IN v3.0</span></div>
+      </div>
+      <div class="setting-card blue">
+        <p class="setting-label">☁️ Cloud Sync</p>
+        <p style="color:rgba(255,255,255,.5);font-size:13px;line-height:1.6">
+          ${l==='bn'?'এখন ডেটা ফোনে save হচ্ছে। Firebase যোগ করলে সব ডিভাইসে sync হবে।':'Data is saved locally. Add Firebase for cross-device sync.'}
+        </p>
+        <button class="lang-btn" style="background:rgba(0,120,255,.2);color:#60aaff;margin-top:10px;width:100%" onclick="openModal()">
+          📖 ${l==='bn'?'Roadmap দেখুন':'View Roadmap'}
+        </button>
+      </div>
+      <p class="version-text">ReminderAI v2.0 · Made with Claude AI</p>
+    `;
+  }
+  
+  // Check notif permission
+  if('Notification' in window) state.notifPerm=Notification.permission;
+}
+
+function showTab(t){
+  state.tab=t;
+  if(t==='focus'&&state.focusRunning){/* keep running */}
+  render();
+}
+
+// INIT
+if('Notification' in window) state.notifPerm=Notification.permission;
+// Re-schedule existing reminders
+state.reminders.filter(r=>!r.fired).forEach(r=>scheduleNotif(r));
+render();
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<meta name="theme-color" content="#0a0a0f"/>
+<meta name="description" content="AI Voice Reminder App — বাংলায় বলুন, AI রিমাইন্ডার সেট করবে"/>
+<title>ReminderAI</title>
+
+<!-- PWA Manifest inline -->
+<link rel="manifest" href="manifest.json"/>
+<link rel="apple-touch-icon" href="https://api.dicebear.com/7.x/bottts/svg?seed=reminderai"/>
+
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#0a0a0f;font-family:'Segoe UI','Hind Siliguri',sans-serif;min-height:100vh;display:flex;justify-content:center;overflow-x:hidden}
+  #app{width:100%;max-width:430px;min-height:100vh;display:flex;flex-direction:column;position:relative}
+  .bg-mesh{position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(0,229,160,.12) 0%,transparent 70%),radial-gradient(ellipse 60% 50% at 80% 90%,rgba(0,120,255,.08) 0%,transparent 70%);pointer-events:none;z-index:0}
+  
+  /* TOPBAR */
+  .topbar{display:flex;justify-content:space-between;align-items:center;padding:16px 20px 8px;position:sticky;top:0;z-index:50;background:rgba(10,10,15,.9);backdrop-filter:blur(20px)}
+  .app-name{font-size:20px;font-weight:800;color:#fff;letter-spacing:-.5px}
+  .lang-toggle{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:4px 14px;color:#fff;font-size:13px;font-weight:700;cursor:pointer}
+  
+  /* CONTENT */
+  .content{flex:1;overflow-y:auto;padding:8px 16px 100px;position:relative;z-index:1}
+  
+  /* CARDS */
+  .greet-card{background:linear-gradient(135deg,rgba(0,229,160,.12),rgba(0,120,255,.08));border-radius:20px;padding:20px;margin-bottom:16px;border:1px solid rgba(0,229,160,.15)}
+  .greet-text{color:rgba(255,255,255,.6);font-size:14px;margin-bottom:4px}
+  .greet-name{color:#fff;font-size:22px;font-weight:800;margin-bottom:16px}
+  .stats-row{display:flex;gap:12px}
+  .stat-box{flex:1;background:rgba(0,0,0,.2);border-radius:12px;padding:10px 8px;text-align:center}
+  .stat-num{display:block;color:#00e5a0;font-size:24px;font-weight:800}
+  .stat-label{display:block;color:rgba(255,255,255,.4);font-size:11px}
+  
+  /* NOTIF BANNER */
+  .notif-banner{width:100%;padding:12px;background:linear-gradient(90deg,#f7971e,#ffd200);border:none;border-radius:14px;color:#1a1a1a;font-weight:800;font-size:14px;cursor:pointer;margin-bottom:16px;display:block;font-family:inherit}
+  .notif-banner.hidden{display:none}
+  
+  /* MIC SECTION */
+  .mic-section{text-align:center;padding:8px 0 20px;display:flex;flex-direction:column;align-items:center;gap:12px}
+  .mic-hint{color:rgba(255,255,255,.5);font-size:13px}
+  .mic-wrap{position:relative;display:flex;align-items:center;justify-content:center;width:140px;height:140px}
+  .pulse{position:absolute;border-radius:50%;animation:pulse 1.5s ease-out infinite}
+  .pulse1{width:120px;height:120px;border:2px solid rgba(0,229,160,.4);animation-delay:0s}
+  .pulse2{width:140px;height:140px;border:1px solid rgba(0,229,160,.2);animation-delay:.5s}
+  @keyframes pulse{0%{transform:scale(.9);opacity:1}100%{transform:scale(1.1);opacity:0}}
+  .pulse.hidden{display:none}
+  .big-mic{width:100px;height:100px;border-radius:50%;border:none;font-size:42px;cursor:pointer;display:flex;align-items:center;justify-content:center;background:#00e5a0;box-shadow:0 0 40px rgba(0,229,160,.35);position:relative;z-index:1;transition:all .2s}
+  .big-mic.listening{background:#ff4444;box-shadow:0 0 40px rgba(255,68,68,.35)}
+  .mic-example{color:rgba(255,255,255,.3);font-size:12px;font-style:italic;max-width:260px}
+  
+  /* OR DIVIDER */
+  .or-row{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+  .or-line{flex:1;height:1px;background:rgba(255,255,255,.08)}
+  .or-text{color:rgba(255,255,255,.25);font-size:12px}
+  
+  /* INPUT */
+  .input-wrap{background:rgba(255,255,255,.04);border-radius:18px;padding:16px;border:1px solid rgba(255,255,255,.08);margin-bottom:16px}
+  textarea{width:100%;background:transparent;border:none;outline:none;color:#fff;font-size:15px;resize:none;line-height:1.6;font-family:inherit}
+  textarea::placeholder{color:rgba(255,255,255,.3)}
   .preset-scroll{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;margin:8px 0;scrollbar-width:none}
   .chip{flex-shrink:0;padding:6px 12px;border-radius:20px;background:rgba(0,229,160,.08);border:1px solid rgba(0,229,160,.2);color:rgba(255,255,255,.7);font-size:12px;cursor:pointer;white-space:nowrap;font-family:inherit}
   .set-btn{width:100%;padding:13px;border-radius:50px;border:none;background:linear-gradient(90deg,#00e5a0,#00a8ff);color:#000;font-weight:800;font-size:15px;cursor:pointer;margin-top:8px;font-family:inherit;transition:opacity .2s}

@@ -332,10 +332,8 @@ function scheduleNotif(r){
     time:`${h12}:00 ${period}`,
     tasks:[input.substring(0,35)||'কাজ করুন','সময়মতো শেষ করুন','প্রোডাক্টিভ থাকুন'],
     greeting:`${h12}:00 ${period} বেজে গেছে! কাজ শুরু করুন।`,
-    title:`${h12}:00 ${period} — রিমাইন্ডার`
-  };
- }async function callAI(input  const isBn=state.lang  const sys=`You are a smart reminder assistant. Parse the user's ${isBn?'Bengali':'English'2. A list of 3-5 specific tasks (array of strings in ${isBn?'Bengali':'English'3. A warm AI greeting in ${isBn?'Bengali':'English'} for ${state.userName||'the user'    method:'POST'    headers:{'Content-Type':'application/json'    body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:sys,messages:[{role:'user',content  const data=await res.json  const raw=data.content?.[0]?  try{return JSON.parse(raw.replace(/```json|```/g,'').trim());}catch{return null;
-
+    title:`${h12}:00 ${period} — রিমাইন্ডার
+    }; 
 // ══════════════════════════════════════════
 // ACTIONS
 // ══════════════════════════════════════════
